@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audio_cache.dart';
@@ -20,13 +21,13 @@ class _MemoriaState extends State<Memoria> {
   AudioPlayer audioPlayer = new AudioPlayer();
 
   static const String HELP =
-      "http://www.christineluken.com/wp-content/uploads/2016/05/Most-Important-Question-1024x1024.jpg";
+      "dogs/help.jpg";
 
   final title = 'Memória';
   Objeto _click1 = null;
   Objeto _click2 = null;
   List<String> iconesPadrao = null;
-  List<String> iconesBase = null;
+  List<String> iconesBase = new List<String>.generate(12, (int index) => "dogs/$index.jpg"); 
   List<String> icones = [];
   List<bool> acertos = null;
   static const String testDevice = 'ca-app-pub-1741287384517063~5435031724';
@@ -48,22 +49,14 @@ class _MemoriaState extends State<Memoria> {
 
   _novoJogo() {
     iconesPadrao = [HELP, HELP, HELP, HELP, HELP, HELP];
-    iconesBase = [
-      "https://images.theconversation.com/files/205966/original/file-20180212-58348-7huv6f.jpeg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip",
-      "https://www.cesarsway.com/sites/newcesarsway/files/styles/large_article_preview/public/Common-dog-behaviors-explained.jpg?itok=FSzwbBoi",
-      "https://www.what-dog.net/Images/faces2/scroll001.jpg",
-      "https://static.boredpanda.com/blog/wp-content/org_uploads/2014/06/cute-dog.jpg",
-      "http://dognamesearch.com/wp-content/uploads/2014/05/puppy-sound-300x289.jpg",
-      "https://c1.staticflickr.com/1/730/21225816748_c41918293d_b.jpg",
-      "https://grist.files.wordpress.com/2012/01/daschund-dog-flickr-jonathan-gill-2.jpg"
-    ];
+    
     acertos = [false, false, false, false, false, false];
     icones = [];
     iconesBase.shuffle();
     icones.addAll(iconesBase.sublist(0, 3));
     icones.addAll(iconesBase.sublist(0, 3));
     icones.shuffle();
-    print(icones);
+    //print(icones);
   }
 
   InterstitialAd createInterstitialAd() {
@@ -71,7 +64,7 @@ class _MemoriaState extends State<Memoria> {
       adUnitId: InterstitialAd.testAdUnitId,
       targetingInfo: targetingInfo,
       listener: (MobileAdEvent event) {
-        print("InterstitialAd event $event");
+        //print("InterstitialAd event $event");
       },
     );
   }
@@ -92,7 +85,7 @@ class _MemoriaState extends State<Memoria> {
                 color: Colors.white,
                 child: new ConstrainedBox(
                   constraints: new BoxConstraints.expand(),
-                  child: new Image.network(
+                  child: new Image.asset(
                     iconesPadrao[index],
                     fit: BoxFit.cover,
                     gaplessPlayback: true,
@@ -104,6 +97,8 @@ class _MemoriaState extends State<Memoria> {
                       iconesPadrao[index] = icones[index];
                     });
                     verificaClick(index, icones[index]);
+                  } else {
+                    null;
                   }
                 },
               ),
@@ -119,7 +114,7 @@ class _MemoriaState extends State<Memoria> {
   }
 
   Future<Null> verificaClick(index, String icone) async {
-    await new Future.delayed(const Duration(seconds: 1));
+    await new Future.delayed(const Duration(seconds: 2));
 
     if (_click1 == null && _click2 == null) {
       _click1 = new Objeto(indice: index, icone: icone);
@@ -127,11 +122,11 @@ class _MemoriaState extends State<Memoria> {
       _click2 = new Objeto(indice: index, icone: icone);
       if (_click1.icone == _click2.icone) {
         acertos[_click1.indice] = true;
-        acertos[_click2.indice] = true;
-        play('yes.wav');
-      } else {
-        play('erro.mp3');
-      }
+        acertos[_click2.indice] = true;        
+      } 
+      int som = new Random().nextInt(5)+1;
+      //print('som$som.wav');
+      play('som$som.wav');
       _click1 = null;
       _click2 = null;
 
@@ -147,15 +142,15 @@ class _MemoriaState extends State<Memoria> {
       if (acabou) {
         setState(() {
           _novoJogo();
-          print("Novo JOGO");
-          print("Inicio Propaganda");
+          //print("Novo JOGO");
+          //print("Inicio Propaganda");
           _interstitialAd?.dispose();
           _interstitialAd = createInterstitialAd()..load();
           _interstitialAd?.show();
-          print("Fim Propaganda");
+          //print("Fim Propaganda");
         });
       }
     }
-    print(acertos);
+    //print(acertos);
   }
 }

@@ -34,9 +34,24 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/acerto.mp3
-    - assets/erro.mp3
-    - assets/yes.wav
+    - assets/som1.wav
+    - assets/som2.wav
+    - assets/som3.wav
+    - assets/som4.wav
+    - assets/som5.wav
+    - dogs/1.jpg
+    - dogs/2.jpg
+    - dogs/3.jpg
+    - dogs/4.jpg
+    - dogs/5.jpg
+    - dogs/6.jpg
+    - dogs/7.jpg
+    - dogs/8.jpg
+    - dogs/9.jpg
+    - dogs/10.jpg
+    - dogs/11.jpg
+    - dogs/12.jpg
+    - dogs/help.jpg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

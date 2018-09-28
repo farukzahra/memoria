@@ -1,0 +1,99 @@
+Flutter crash report; please file at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter run --machine -t lib\main.dart -d emulator-5554 --start-paused
+
+## exception
+
+NoSuchMethodError: NoSuchMethodError: The getter 'isModule' was called on null.
+Receiver: null
+Tried calling: isModule
+
+```
+#0      Object.noSuchMethod (dart:core-patch/dart:core/object_patch.dart:46)
+#1      FlutterProject.ensureReadyForPlatformSpecificTooling (package:flutter_tools/src/project.dart:88)
+<asynchronous suspension>
+#2      FlutterCommand.verifyThenRunCommand (package:flutter_tools/src/runner/flutter_command.dart:335)
+<asynchronous suspension>
+#3      FlutterCommand.run.<anonymous closure> (package:flutter_tools/src/runner/flutter_command.dart:282)
+<asynchronous suspension>
+#4      AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:142)
+<asynchronous suspension>
+#5      _rootRun (dart:async/zone.dart:1126)
+#6      _CustomZone.run (dart:async/zone.dart:1023)
+#7      _runZoned (dart:async/zone.dart:1518)
+#8      runZoned (dart:async/zone.dart:1465)
+#9      AppContext.run (package:flutter_tools/src/base/context.dart:141)
+<asynchronous suspension>
+#10     FlutterCommand.run (package:flutter_tools/src/runner/flutter_command.dart:273)
+#11     CommandRunner.runCommand (package:args/command_runner.dart:194)
+<asynchronous suspension>
+#12     FlutterCommandRunner.runCommand.<anonymous closure> (package:flutter_tools/src/runner/flutter_command_runner.dart:322)
+<asynchronous suspension>
+#13     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:142)
+<asynchronous suspension>
+#14     _rootRun (dart:async/zone.dart:1126)
+#15     _CustomZone.run (dart:async/zone.dart:1023)
+#16     _runZoned (dart:async/zone.dart:1518)
+#17     runZoned (dart:async/zone.dart:1465)
+#18     AppContext.run (package:flutter_tools/src/base/context.dart:141)
+<asynchronous suspension>
+#19     FlutterCommandRunner.runCommand (package:flutter_tools/src/runner/flutter_command_runner.dart:278)
+<asynchronous suspension>
+#20     CommandRunner.run.<anonymous closure> (package:args/command_runner.dart:109)
+#21     new Future.sync (dart:async/future.dart:222)
+#22     CommandRunner.run (package:args/command_runner.dart:109)
+#23     FlutterCommandRunner.run (package:flutter_tools/src/runner/flutter_command_runner.dart:187)
+#24     run.<anonymous closure> (package:flutter_tools/runner.dart:59)
+<asynchronous suspension>
+#25     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:142)
+<asynchronous suspension>
+#26     _rootRun (dart:async/zone.dart:1126)
+#27     _CustomZone.run (dart:async/zone.dart:1023)
+#28     _runZoned (dart:async/zone.dart:1518)
+#29     runZoned (dart:async/zone.dart:1465)
+#30     AppContext.run (package:flutter_tools/src/base/context.dart:141)
+<asynchronous suspension>
+#31     runInContext (package:flutter_tools/src/context_runner.dart:42)
+<asynchronous suspension>
+#32     run (package:flutter_tools/runner.dart:50)
+#33     main (package:flutter_tools/executable.dart:50)
+<asynchronous suspension>
+#34     main (file:///C:/flutter/packages/flutter_tools/bin/flutter_tools.dart:8)
+#35     _startIsolate.<anonymous closure> (dart:isolate-patch/dart:isolate/isolate_patch.dart:277)
+#36     _RawReceivePortImpl._handleMessage (dart:isolate-patch/dart:isolate/isolate_patch.dart:165)
+```
+
+## flutter doctor
+
+```
+[✓] Flutter (Channel master, v0.6.1-pre.13, on Microsoft Windows [versÃ£o 10.0.14393], locale pt-BR)
+    • Flutter version 0.6.1-pre.13 at C:\flutter
+    • Framework revision b5b55447a4 (6 weeks ago), 2018-08-16 08:47:20 -0700
+    • Engine revision 6fe748490d
+    • Dart version 2.0.0-dev.63.0.flutter-4c9689c1d2
+
+[!] Android toolchain - develop for Android devices (Android SDK 27.0.3)
+    • Android SDK at C:\Users\faruk.zahra\AppData\Local\Android\sdk
+    • Android NDK location not configured (optional; useful for native profiling support)
+    • Platform android-27, build-tools 27.0.3
+    • Java binary at: C:\Program Files\Android\Android Studio\jre\bin\java
+    • Java version OpenJDK Runtime Environment (build 1.8.0_152-release-1024-b02)
+    ✗ Android license status unknown.
+
+[✓] Android Studio (version 3.1)
+    • Android Studio at C:\Program Files\Android\Android Studio
+    • Flutter plugin version 26.0.1
+    • Dart plugin version 173.4700
+    • Java version OpenJDK Runtime Environment (build 1.8.0_152-release-1024-b02)
+
+[✓] VS Code, 64-bit edition (version 1.27.2)
+    • VS Code at C:\Program Files\Microsoft VS Code
+    • Flutter extension version 2.18.0
+
+[✓] Connected devices (1 available)
+    • Android SDK built for x86 64 • emulator-5554 • android-x64 • Android 9 (API 28) (emulator)
+
+! Doctor found issues in 1 category.
+```
